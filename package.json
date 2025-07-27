@@ -1,0 +1,15 @@
+{
+  "name": "memory-calendar",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "scripts": {
+	  "test": "bun run test.ts"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}
