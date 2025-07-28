@@ -7,7 +7,8 @@ const g = Bun.file("data/geo.json");
 const geo = JSON.parse(await g.text());
 
 const dates = trips2Dates(trips, geo);
-console.log(dates);
+
+await Bun.write("data/dates.json", JSON.stringify(dates, null, 2));
 
 export function countryFromCity(cityKey: String, geo: Object) {
   // extremely bad naive "search" but this structure will always be small
