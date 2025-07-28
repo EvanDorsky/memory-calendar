@@ -6,7 +6,8 @@ const trips = JSON.parse(await f.text());
 const g = Bun.file("data/geo.json");
 const geo = JSON.parse(await g.text());
 
-trips2Dates(trips, geo);
+const dates = trips2Dates(trips, geo);
+console.log(dates);
 
 export function countryFromCity(cityKey: String, geo: Object) {
   // extremely bad naive "search" but this structure will always be small
@@ -30,22 +31,22 @@ export function trip2Dates(trip: Object, geo: Object) {
   const country = countryFromCity(city, geo);
 }
 
-export function trips2Dates(trips: Object, geo: Object) {
+export function trips2Dates(trips: Object, geo: Object): Array<any> {
+  // parse out the legs, return a date list
+  const tripDates: Array<any> = [];
   Object.entries(trips).forEach(([name, trip]) => {
     // const firstNight = Temporal.PlainDate.from(trip.firstnight);
     let runningDate = new Date(trip.firstnight);
-    console.log(runningDate);
 
-    const tripDates = [];
     trip.legs.forEach((leg: Array<any>) => {
       const city = leg[0];
       const country = countryFromCity(city, geo);
-      console.log(country);
       const durationDays = leg[1];
 
       for (let i = 0; i < durationDays; i++) {
         let date = {
-          date: runningDate,
+          // ISO format
+          date: runningDate.toLocaleDateString("en-CA"),
           country: country,
         };
         // lol
@@ -54,11 +55,6 @@ export function trips2Dates(trips: Object, geo: Object) {
         tripDates.push(date);
       }
     });
-
-    console.log(tripDates);
-
-    // parse out the legs, return a date list
-    // console.log(firstNight.toString());
-    //
   });
+  return tripDates;
 }
