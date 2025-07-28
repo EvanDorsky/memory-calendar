@@ -1,15 +1,20 @@
 {
   "name": "memory-calendar",
   "module": "index.ts",
-  "type": "module",
-  "private": true,
   "devDependencies": {
-    "@types/bun": "latest"
-  },
-  "scripts": {
-	  "test": "bun run test.ts"
+    "@types/bun": "latest",
+    "@types/d3": "^7.4.3"
   },
   "peerDependencies": {
     "typescript": "^5"
+  },
+  "private": true,
+  "scripts": {
+    "test": "bun run test.ts"
+  },
+  "type": "module",
+  "dependencies": {
+    "@observablehq/plot": "^0.6.17",
+    "d3-time": "^3.1.0"
   }
 }
