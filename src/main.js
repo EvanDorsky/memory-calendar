@@ -34,7 +34,13 @@ try {
         x: (d) => d3.utcWeek.count(d3.utcYear(d.date), d.date),
         y: (d) => d.date.getUTCDay(),
         fy: (d) => d.date.getUTCFullYear(),
-        fill: (d, i) => 10,
+        fill: (d, i) => {
+          if (d.country) {
+            return 10;
+          } else {
+            return -10;
+          }
+        },
         title: (d, i) => 10,
         inset: 0.5,
       }),
