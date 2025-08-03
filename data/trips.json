@@ -16,5 +16,9 @@
       ["sapporo", 1],
       ["osaka", 1]
     ]
+  },
+  "chicago": {
+    "firstnight": "2025-04-18",
+    "legs": [["chicago", 7]]
   }
 }

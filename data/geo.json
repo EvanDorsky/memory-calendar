@@ -2,5 +2,6 @@
   "Japan": ["Tokyo", "Otaru", "Sapporo", "Osaka"],
   "India": ["Bangalore"],
   "China": ["Hong Kong"],
-  "Korea": ["Seoul", "Busan"]
+  "Korea": ["Seoul", "Busan"],
+  "United States": ["Chicago"]
 }
