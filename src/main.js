@@ -1,13 +1,9 @@
 import * as Plot from "@observablehq/plot";
 import * as d3 from "d3";
 
-console.log("try to wiat");
 const res = await fetch("data/dates.json");
 if (!res.ok) throw new Error(`HTTP ${res.status}`);
 const data = await res.json();
-
-console.log("done try to wiat");
-console.log(data);
 
 const parsedData = data.map((d) => ({
   ...d,
@@ -23,11 +19,10 @@ try {
     y: { tickFormat: Plot.formatWeekday("en", "narrow"), tickSize: 0 },
     fy: { tickFormat: "" },
     color: {
-      scheme: "PiYG",
+      range: ["#ddddddff", "#0077aaff"],
       legend: true,
-      label: "Daily change",
-      tickFormat: "+%",
-      domain: [-0.06, 0.06],
+      label: "Country",
+      domain: [-10, 10],
     },
     marks: [
       Plot.cell(parsedData, {
@@ -41,7 +36,7 @@ try {
             return -10;
           }
         },
-        title: (d, i) => 10,
+        title: (d, i) => d.country,
         inset: 0.5,
       }),
     ],
