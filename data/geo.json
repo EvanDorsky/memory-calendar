@@ -3,5 +3,13 @@
   "India": ["Bangalore"],
   "China": ["Hong Kong"],
   "Korea": ["Seoul", "Busan"],
-  "United States": ["Chicago"]
+  "United States": [
+    "Chicago",
+    "Boston",
+    "New York",
+    "Westport",
+    "Salem",
+    "Pittsburgh",
+    "Marietta"
+  ]
 }
