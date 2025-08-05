@@ -16,10 +16,10 @@ try {
   plot = Plot.plot({
     padding: 0,
     x: { axis: null },
-    y: { tickFormat: Plot.formatWeekday("en", "narrow"), tickSize: 0 },
+    y: { tickFormat: null, tickSize: 0 },
     fy: { tickFormat: "" },
     color: {
-      range: ["#ddddddff", "#0077aaff"],
+      range: ["#00000011", "#0077aaff"],
       legend: true,
       label: "Country",
       domain: [-10, 10],
