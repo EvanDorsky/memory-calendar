@@ -13,14 +13,14 @@
     ]
   },
   "asia span": {
-    "firstnight": "2024-12-12",
+    "firstnight": "2024-12-17",
     "legs": [
       ["seoul", 1],
       ["busan", 1],
-      ["hong kong", 2],
-      ["otaru", 1],
+      ["hong kong", 3],
+      ["otaru", 3],
       ["sapporo", 1],
-      ["osaka", 1]
+      ["osaka", 5]
     ]
   },
   "chicago": {
