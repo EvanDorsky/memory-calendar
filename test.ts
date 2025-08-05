@@ -1,4 +1,4 @@
-import { timeDay } from "d3-time";
+import { DateTime } from "luxon";
 
 const f = Bun.file("data/trips.json");
 const trips = JSON.parse(await f.text());
@@ -29,15 +29,16 @@ export function countryFromCity(cityKey: String, geo: Object) {
 }
 
 function daysForYear(year: number) {
-  const start = new Date(Date.UTC(year, 0, 1));
-  const end = new Date(Date.UTC(year + 1, 0, 1));
+  const start = DateTime.utc(year, 1, 1);
+  const end = DateTime.utc(year + 1, 1, 1);
   const dates = [];
-  for (let d = start; d < end; d.setUTCDate(d.getUTCDate() + 1)) {
+  for (let d = start; d < end; d = d.plus({ days: 1 })) {
     dates.push({
-      date: new Date(d),
+      date: d,
       country: "",
     });
   }
+
   return dates;
 }
 
@@ -64,7 +65,7 @@ export function trips2Dates(trips: Object, geo: Object): Array<any> {
   // the date list needs to have all the days from the entire year
   const tripDays: Array<any> = [];
   Object.entries(trips).forEach(([name, trip]) => {
-    let runningDate = new Date(trip.firstnight);
+    let runningDate = DateTime.fromISO(trip.firstnight);
 
     trip.legs.forEach((leg: Array<any>) => {
       const city = leg[0];
@@ -78,7 +79,7 @@ export function trips2Dates(trips: Object, geo: Object): Array<any> {
           country: country,
         };
 
-        runningDate = timeDay.offset(runningDate, 1);
+        runningDate = runningDate.plus({ days: 1 });
 
         tripDays.push(date);
       }
@@ -88,12 +89,12 @@ export function trips2Dates(trips: Object, geo: Object): Array<any> {
   // TODO: sort the tripDates list by date to make this next step faster
 
   days.forEach((day) => {
-    const date = day.date;
+    const date = day.date
 
     tripDays.forEach((tripDay) => {
-      const tripDate = tripDay.date;
+      const tripDate = DateTime.fromISO(tripDay.date);
 
-      if (tripDate.getTime() === date.getTime()) {
+      if (date.hasSame(tripDate, "day")) {
         day.country = tripDay.country;
       }
     });
