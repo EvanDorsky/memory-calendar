@@ -10,13 +10,13 @@ const tripDates = trips2Dates(trips, geo);
 
 await Bun.write("public/data/dates.json", JSON.stringify(tripDates, null, 2));
 
-export function countryFromCity(cityKey: String, geo: Object): [string, string] {
+export function countryFromCity(cityKey: string, geo: Object): [string, string] {
   // extremely bad naive "search" but this structure will always be small
 
   // also this "let res" pattern seems bad
-  let res = ["", ""];
+  let res: [string, string] = ["", ""];
   Object.entries(geo).forEach(([country, cities]) => {
-    cities.forEach((city: String) => {
+    cities.forEach((city: string) => {
       const cityNorm = city.toLowerCase();
 
       if (cityNorm === cityKey) {
