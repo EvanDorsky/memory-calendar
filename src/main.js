@@ -18,22 +18,21 @@ try {
     x: { axis: null },
     y: { tickFormat: null, tickSize: 0 },
     fy: { tickFormat: "" },
-    color: {
-      range: ["#00000011", "#0077aaff"],
-      legend: true,
-      label: "Country",
-      domain: [-10, 10],
-    },
     marks: [
       Plot.cell(parsedData, {
         x: (d) => d3.utcWeek.count(d3.utcYear(d.date), d.date),
         y: (d) => d.date.getUTCDay(),
         fy: (d) => d.date.getUTCFullYear(),
         fill: (d, i) => {
-          if (d.country) {
-            return 10;
+          if (d.country == "Japan") {
+            return "red";
+          } else if (d.city == "New York") {
+            return "blue";
+          } else if (d.country) {
+            console.log(d);
+            return "green";
           } else {
-            return -10;
+            return "#00000033"
           }
         },
         title: (d, i) => d.country,

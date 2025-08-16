@@ -10,17 +10,17 @@ const tripDates = trips2Dates(trips, geo);
 
 await Bun.write("public/data/dates.json", JSON.stringify(tripDates, null, 2));
 
-export function countryFromCity(cityKey: String, geo: Object) {
+export function countryFromCity(cityKey: String, geo: Object): [string, string] {
   // extremely bad naive "search" but this structure will always be small
 
   // also this "let res" pattern seems bad
-  let res = null;
+  let res = ["", ""];
   Object.entries(geo).forEach(([country, cities]) => {
     cities.forEach((city: String) => {
       const cityNorm = city.toLowerCase();
 
       if (cityNorm === cityKey) {
-        res = country;
+        res = [country, city];
       }
     });
   });
@@ -36,6 +36,7 @@ function daysForYear(year: number) {
     dates.push({
       date: d,
       country: "",
+      city: ""
     });
   }
 
@@ -53,10 +54,6 @@ function yearDays(years: Array<any>): Array<Object> {
   return allDays;
 }
 
-export function trip2Dates(trip: Object, geo: Object) {
-  const country = countryFromCity(city, geo);
-}
-
 export function trips2Dates(trips: Object, geo: Object): Array<any> {
   // parse out the legs, return a date list
 
@@ -68,8 +65,10 @@ export function trips2Dates(trips: Object, geo: Object): Array<any> {
     let runningDate = DateTime.fromISO(trip.firstnight);
 
     trip.legs.forEach((leg: Array<any>) => {
-      const city = leg[0];
-      const country = countryFromCity(city, geo);
+      let city = leg[0];
+      const countryCity = countryFromCity(city, geo);
+      const country = countryCity[0];
+      city = countryCity[1];
       const durationDays = leg[1];
 
       for (let i = 0; i < durationDays; i++) {
@@ -77,6 +76,7 @@ export function trips2Dates(trips: Object, geo: Object): Array<any> {
           // ISO format
           date: runningDate,
           country: country,
+          city: city
         };
 
         runningDate = runningDate.plus({ days: 1 });
@@ -96,6 +96,7 @@ export function trips2Dates(trips: Object, geo: Object): Array<any> {
 
       if (date.hasSame(tripDate, "day")) {
         day.country = tripDay.country;
+        day.city = tripDay.city;
       }
     });
   });
