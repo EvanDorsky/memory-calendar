@@ -1,9 +1,77 @@
 {
+  "postcovid home": {
+    "firstnight": "2021-05-13",
+    "legs": [
+      ["westport", 27]
+    ]
+  },
+  "seattle 2021": {
+    "firstnight": "2021-08-06",
+    "legs": [
+      ["portland", 2],
+      ["seattle", 4]
+    ]
+  },
+  "home ny 2021": {
+    "firstnight": "2021-09-30",
+    "legs": [
+      ["boston", 7],
+      ["westport", 5],
+      ["new providence", 1],
+      ["new york", 5]
+    ]
+  },
+  "leavenworth": {
+    "firstnight": "2021-11-01",
+    "legs": [
+      ["leavenworth", 6]
+    ]
+  },
+  "home philly": {
+    "firstnight": "2021-11-23",
+    "legs": [
+      ["leavenworth", 10],
+      ["boston", 1],
+      ["philadelphia", 3]
+    ]
+  },
+  "florida 2022": {
+    "firstnight": "2022-05-10",
+    "legs": [
+      ["fort lauderdale", 5]
+    ]
+  },
+  "east coast june 2022": {
+    "firstnight": "2022-06-07",
+    "legs": [
+      ["new york", 5],
+      ["annapolis", 3]
+    ]
+  },
+  "la train": {
+    "firstnight": "2022-10-17",
+    "legs": [
+      ["los angeles", 4]
+    ]
+  },
+  "korea trio": {
+    "firstnight": "2022-11-15",
+    "legs": [
+      ["tokyo", 6],
+      ["seoul", 11]
+    ]
+  },
   "bangalore wedding": {
     "firstnight": "2023-01-17",
     "legs": [
       ["bangalore", 3],
       ["tokyo", 1]
+    ]
+  },
+  "seattle 2023": {
+    "firstnight": "2023-10-17",
+    "legs": [
+      ["seattle", 6]
     ]
   },
   "japan 30th": {
@@ -13,9 +81,10 @@
     ]
   },
   "new york thxgiving": {
-    "firstnight": "2024-02-27",
+    "firstnight": "2024-11-21",
     "legs": [
-      ["tokyo", 20]
+      ["new york", 4],
+      ["westport", 7]
     ]
   },
   "asia span": {

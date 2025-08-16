@@ -57,7 +57,7 @@ function yearDays(years: Array<any>): Array<Object> {
 export function trips2Dates(trips: Object, geo: Object): Array<any> {
   // parse out the legs, return a date list
 
-  const days = yearDays([2022, 2025]);
+  const days = yearDays([2021, 2025]);
 
   // the date list needs to have all the days from the entire year
   const tripDays: Array<any> = [];
