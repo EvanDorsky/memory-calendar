@@ -1,14 +1,13 @@
 import { DateTime } from "luxon";
 
-const f = Bun.file("data/trips.json");
-const trips = JSON.parse(await f.text());
+import trips from "./data/trips.json" assert { type: "json" }
 
 const g = Bun.file("data/geo.json");
 const geo = JSON.parse(await g.text());
 
 const tripDates = trips2Dates(trips, geo);
 
-await Bun.write("public/data/dates.json", JSON.stringify(tripDates, null, 2));
+await Bun.write("data/output/dates.json", JSON.stringify(tripDates, null, 2));
 
 export function countryFromCity(cityKey: string, geo: Object): [string, string] {
   // extremely bad naive "search" but this structure will always be small

@@ -1,9 +1,7 @@
 import * as Plot from "@observablehq/plot";
 import * as d3 from "d3";
 
-const res = await fetch("data/dates.json");
-if (!res.ok) throw new Error(`HTTP ${res.status}`);
-const data = await res.json();
+import data from "../data/output/dates.json"
 
 const parsedData = data.map((d) => ({
   ...d,
