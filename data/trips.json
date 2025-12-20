@@ -124,5 +124,23 @@
       ["salem", 3],
       ["pittsburgh", 1]
     ]
+  },
+  "climateweek": {
+    "firstnight": "2025-09-19",
+    "legs": [
+      ["new york", 7]
+    ]
+  },
+  "spangalore": {
+    "firstnight": "2025-09-19",
+    "legs": [
+      ["bangalore", 5]
+    ]
+  },
+  "japan bouz": {
+    "firstnight": "2025-12-21",
+    "legs": [
+      ["tokyo", 6]
+    ]
   }
 }
